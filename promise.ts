@@ -1,12 +1,11 @@
-import fetch from "node-fetch"
+import fetch from "node-fetch";
 
-function promise() {
+export function promise() {
     // Пример 1
-    let promise = new Promise((resolve, reject) => {
-        if (false) {
+    let promise: Promise<any> = new Promise((resolve, reject) => {
+        if (true) {
             setTimeout(() => resolve("готово!"), 1000);
         } else {
-
            reject(new Error("error"));
         }
     }).then(console.log);
@@ -22,4 +21,3 @@ function promise() {
     ).then(console.log);
 }
 
-promise();

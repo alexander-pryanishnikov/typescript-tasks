@@ -1,5 +1,4 @@
-
-function main(): void {
+export function event_loop(): void {
     console.log('A')
     setTimeout(function exec() { // Уйдет в очередь, поэтому выполнится последним(не смотря на то, что у него 0 сек. задержки)
         console.log('B')
@@ -8,10 +7,8 @@ function main(): void {
     console.log('C')
 }
 
-main()
-
 function runWhileLoopForNSeconds(sec: number): void {
-    let start = Date.now(),
+    let start: number = Date.now(),
         now = start
     while (now - start < sec * 1000) { // Блокирует поток и проходит без очереди
         now = Date.now()
