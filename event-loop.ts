@@ -1,16 +1,28 @@
-export function event_loop(): void {
-    console.log('A')
-    setTimeout(function exec() { // Уйдет в очередь, поэтому выполнится последним(не смотря на то, что у него 0 сек. задержки)
-        console.log('B')
-    }, 0)
-    runWhileLoopForNSeconds(3)
-    console.log('C')
+export function eventLoop(): void {
+
+	console.log('A');
+
+	// Уйдет в очередь, поэтому выполнится последним(не смотря на то, что у него 0 сек. задержки)
+	setTimeout(function exec() {
+
+		console.log('B');
+
+	}, 0);
+
+	runLoop(3);
+	console.log('C');
+
 }
 
-function runWhileLoopForNSeconds(sec: number): void {
-    let start: number = Date.now(),
-        now = start
-    while (now - start < sec * 1000) { // Блокирует поток и проходит без очереди
-        now = Date.now()
-    }
+function runLoop(seconds: number): void {
+
+	const start: number = Date.now();
+	let now = start;
+
+	// Блокирует поток и проходит без очереди
+	while (now - start < seconds * 1000) {
+
+		now = Date.now();
+
+	}
 }
